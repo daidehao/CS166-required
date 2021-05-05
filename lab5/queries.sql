@@ -1,6 +1,6 @@
-SELECT parts.pid 
-FROM parts, catalog 
-WHERE catalog.cost<10 AND catalog.pid=parts.pid;
+SELECT pid 
+FROM catalog 
+WHERE cost<10;
 
 SELECT parts.pname
 FROM parts, catalog
