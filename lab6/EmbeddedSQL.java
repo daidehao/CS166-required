@@ -338,10 +338,10 @@ public class EmbeddedSQL {
    public static void Query6(EmbeddedSQL esql){
       // Your code goes here.
       try{
-         String query = "SELECT suppliers.address FROM suppliers, Catalog, parts WHERE suppliers.sid=catalog.sid AND catalog.pid=parts.pid AND parts.pname = ";
+         String query = "SELECT suppliers.address FROM suppliers, Catalog, parts WHERE suppliers.sid=catalog.sid AND catalog.pid=parts.pid AND parts.pname = '";
          System.out.print("\tEnter pname: $");
          String input = in.readLine();
-         query += input;
+         query += input+"'";
 
          int rowCount = esql.executeQuery(query);
          System.out.println ("total row(s): " + rowCount);
