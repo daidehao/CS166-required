@@ -338,8 +338,8 @@ public class EmbeddedSQL {
    public static void Query6(EmbeddedSQL esql){
       // Your code goes here.
       try{
-         String query = "SELECT * FROM Catalog WHERE cost < ";
-         System.out.print("\tEnter cost: $");
+         String query = "SELECT suppliers.address FROM suppliers, Catalog, parts WHERE suppliers.sid=catalog.sid AND catalog.pid=parts.pid AND parts.pname = ";
+         System.out.print("\tEnter pname: $");
          String input = in.readLine();
          query += input;
 
