@@ -287,7 +287,7 @@ public class EmbeddedSQL {
     	   "EXCEPT "+
 	   "SELECT suppliers.sname AS Suppliers_Name, COUNT(*) AS Parts_Count "+
   	   "FROM catalog, suppliers, parts "+
-           "WHERE suppliers.sid=catalog.sid AND catalog.pid=parts.pid AND parts.color!='Green '+
+           "WHERE suppliers.sid=catalog.sid AND catalog.pid=parts.pid AND parts.color!='Green ' "+
            "GROUP BY suppliers.sid";
 
          int rowCount = esql.executeQuery(query);
