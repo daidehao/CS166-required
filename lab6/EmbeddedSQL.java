@@ -249,12 +249,18 @@ public class EmbeddedSQL {
    }//end QueryExample
    
    public static void Query1(EmbeddedSQL esql){
-      try{
-        String query = "
-      }
       // Your code goes here.
-      // ...
-      // ...
+      try{
+         String query = "SELECT suppliers.sname AS Suppliers_Name, COUNT(*) AS Parts_Count "+
+           "FROM catalog, suppliers "+
+           "WHERE suppliers.sid=catalog.sid "+
+           "GROUP BY suppliers.sid";
+
+         int rowCount = esql.executeQuery(query);
+         System.out.println ("total row(s): " + rowCount);
+      }catch(Exception e){
+         System.err.println (e.getMessage());
+      }
    }//end Query1
 
    public static void Query2(EmbeddedSQL esql){
