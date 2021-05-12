@@ -323,7 +323,7 @@ public class EmbeddedSQL {
    public static void Query5(EmbeddedSQL esql){
       // Your code goes here.
       try{
-         String query = "SELECT parts.pname FROM catalog, parts WHERE catalog.pid=parts.pid AND catalog.cost < ";
+         String query = "SELECT catalog.pid, parts.pname, parts.color, catalog.cost FROM catalog, parts WHERE catalog.pid=parts.pid AND catalog.cost < ";
          System.out.print("\tEnter cost: $");
          String input = in.readLine();
          query += input;
