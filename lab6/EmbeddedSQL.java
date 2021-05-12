@@ -249,6 +249,9 @@ public class EmbeddedSQL {
    }//end QueryExample
    
    public static void Query1(EmbeddedSQL esql){
+      try{
+        String query = "
+      }
       // Your code goes here.
       // ...
       // ...
