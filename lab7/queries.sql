@@ -22,7 +22,7 @@ SELECT DISTINCT supplier.supplier_name
 FROM part_sfo, supplier
 WHERE part_sfo.supplier=supplier.supplier_id;
 
-UPDATE part_nyc SET on_hand=(on_hand+10);
+UPDATE part_nyc SET on_hand=(on_hand-10);
 
 DELETE FROM part_nyc
 WHERE part_nyc.on_hand<30;
