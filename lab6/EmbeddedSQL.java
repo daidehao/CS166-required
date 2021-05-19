@@ -339,7 +339,7 @@ public class EmbeddedSQL {
       // Your code goes here.
       try{
          String query = "SELECT DISTINCT suppliers.address FROM suppliers, Catalog, parts WHERE suppliers.sid=catalog.sid AND catalog.pid=parts.pid AND parts.pname = '";
-         System.out.print("\tEnter pname: $");
+         System.out.print("\tEnter pname: ");
          String input = in.readLine();
          query += input+"'";
 
