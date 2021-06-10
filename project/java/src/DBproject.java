@@ -371,6 +371,25 @@ public class DBproject{
 
 	public static void ListAppointmentsOfDoctor(DBproject esql) {//5
 		// For a doctor ID and a date range, find the list of active and available appointments of the doctor
+		try{
+			System.out.print("Docter's ID:\n  ");
+			String ID = in.readLine();
+			System.out.print("Appointment's Range(Earliest):\n  ");
+			String Range1 = in.readLine();
+			System.out.print("Appointment's Range(Latest):\n  ");
+			String Range2 = in.readLine();
+        		String query = "SELECT * "+
+           				"FROM Appointment, has_appointment "+
+					"WHERE has_appointment.doctor_id="+ID+" AND has_appointment.appt_id=Appointment.appnt_ID "+
+					"AND (Appointment.status='AC' OR Appointment.status='AV') AND "+
+					Range1+"<Appointment.adate AND Appointment.adate<"+Range2;
+
+			System.out.println(query);
+           		int rowCount = esql.executeQuery(query);
+           		System.out.println ("total row(s): " + rowCount);
+      		}catch(Exception e){
+         		System.err.println (e.getMessage());
+      		}
 	}
 
 	public static void ListAvailableAppointmentsOfDepartment(DBproject esql) {//6
