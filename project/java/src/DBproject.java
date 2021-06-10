@@ -298,6 +298,23 @@ public class DBproject{
 	}//end readChoice
 
 	public static void AddDoctor(DBproject esql) {//1
+		try{
+			System.out.print("Doctor's ID:\n  ");
+			String ID = Integer.parseInt(in.readLine());
+			System.out.print("Doctor's Name:\n  ");
+			String Name = Integer.parseInt(in.readLine());
+			System.out.print("Doctor's specialty:\n  ");
+			String Specialty = Integer.parseInt(in.readLine());
+			System.out.print("Doctor's Department:\n  ");
+			String did = Integer.parseInt(in.readLine());
+        		String query = "INSERT INTO Doctor "+
+           				"VALUES ("+ID+", "+Name+", "+Specialty+", "+did+")";
+
+           		int rowCount = esql.executeQuery(query);
+           		System.out.println ("total row(s): " + rowCount);
+      		}catch(Exception e){
+         		System.err.println (e.getMessage());
+      		}
 	}
 
 	public static void AddPatient(DBproject esql) {//2
