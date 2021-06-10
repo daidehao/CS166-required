@@ -378,13 +378,13 @@ public class DBproject{
 			String Range1 = in.readLine();
 			System.out.print("Appointment's Range(Latest):\n  ");
 			String Range2 = in.readLine();
-        		String query = "SELECT * "+
+        		String query = "SELECT Appointment.appnt_ID, Appointment.adate, Appointment.time_slot, Appointment.status "+
            				"FROM Appointment, has_appointment "+
 					"WHERE has_appointment.doctor_id="+ID+" AND has_appointment.appt_id=Appointment.appnt_ID "+
-					"AND (Appointment.status='AC' OR Appointment.status='AV') AND "+
-					Range1+"<Appointment.adate AND Appointment.adate<"+Range2;
+					"AND Appointment.status IN ('AC','AV') AND '"+
+					Range1+"'<Appointment.adate AND Appointment.adate<'"+Range2+"'";
 
-			System.out.println(query);
+			System.out.println(query+"\n");
            		int rowCount = esql.executeQuery(query);
            		System.out.println ("total row(s): " + rowCount);
       		}catch(Exception e){
