@@ -311,7 +311,7 @@ public class DBproject{
            				"VALUES ("+ID+", '"+Name+"', '"+Specialty+"', "+did+")";
 
            		System.out.println(query);
-			int rowCount = esql.executeQuery(query);
+			int rowCount = esql.executeQueryAndPrintResult(query);
            		System.out.println ("total row(s): " + rowCount);
       		}catch(Exception e){
          		System.err.println (e.getMessage());
@@ -336,7 +336,7 @@ public class DBproject{
            				"VALUES ("+patient_ID+", '"+Name+"', '"+gtype+"', "+age+", '"+Address+"', "+number_of_appts+")";
 
            		System.out.println(query);
-			int rowCount = esql.executeQuery(query);
+			int rowCount = esql.executeQueryAndPrintResult(query);
            		System.out.println ("total row(s): " + rowCount);
       		}catch(Exception e){
          		System.err.println (e.getMessage());
@@ -357,7 +357,7 @@ public class DBproject{
            				"VALUES ("+appnt_ID+", '"+adate+"', '"+time_slot+"', '"+status+"')";
 
 			System.out.println(query);
-           		int rowCount = esql.executeQuery(query);
+           		int rowCount = esql.executeQueryAndPrintResult(query);
            		System.out.println ("total row(s): " + rowCount);
       		}catch(Exception e){
          		System.err.println (e.getMessage());
@@ -385,7 +385,7 @@ public class DBproject{
 					Range1+"'<Appointment.adate AND Appointment.adate<'"+Range2+"'";
 
 			System.out.println(query+"\n");
-           		int rowCount = esql.executeQuery(query);
+           		int rowCount = esql.executeQueryAndPrintResult(query);
            		System.out.println ("total row(s): " + rowCount);
       		}catch(Exception e){
          		System.err.println (e.getMessage());
