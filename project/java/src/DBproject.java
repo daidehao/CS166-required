@@ -300,13 +300,13 @@ public class DBproject{
 	public static void AddDoctor(DBproject esql) {//1
 		try{
 			System.out.print("Doctor's ID:\n  ");
-			String ID = Integer.parseInt(in.readLine());
+			String ID = String.parseString(in.readLine());
 			System.out.print("Doctor's Name:\n  ");
-			String Name = Integer.parseInt(in.readLine());
+			String Name = String.parseString(in.readLine());
 			System.out.print("Doctor's specialty:\n  ");
-			String Specialty = Integer.parseInt(in.readLine());
+			String Specialty = String.parseString(in.readLine());
 			System.out.print("Doctor's Department:\n  ");
-			String did = Integer.parseInt(in.readLine());
+			String did = String.parseString(in.readLine());
         		String query = "INSERT INTO Doctor "+
            				"VALUES ("+ID+", "+Name+", "+Specialty+", "+did+")";
 
@@ -318,9 +318,47 @@ public class DBproject{
 	}
 
 	public static void AddPatient(DBproject esql) {//2
+		try{
+			System.out.print("Patient's ID:\n  ");
+			String patient_ID = String.parseString(in.readLine());
+			System.out.print("Patient's Name:\n  ");
+			String Name = String.parseString(in.readLine());
+			System.out.print("Patient's Gender:\n  ");
+			String gtype = String.parseString(in.readLine());
+			System.out.print("Patient's Age:\n  ");
+			String age = String.parseString(in.readLine());
+			System.out.print("Patient's address:\n  ");
+			String Address = String.parseString(in.readLine());
+			System.out.print("Patient's number_of_appts:\n  ");
+			String number_of_appts = String.parseString(in.readLine());
+        		String query = "INSERT INTO Patient "+
+           				"VALUES ("+patient_ID+", "+Name+", "+gtype+", "+age+", "+Address+", "+number_of_appts+")";
+
+           		int rowCount = esql.executeQuery(query);
+           		System.out.println ("total row(s): " + rowCount);
+      		}catch(Exception e){
+         		System.err.println (e.getMessage());
+      		}
 	}
 
 	public static void AddAppointment(DBproject esql) {//3
+		try{
+			System.out.print("Appointment's ID:\n  ");
+			String appnt_ID = String.parseString(in.readLine());
+			System.out.print("Patient's adate:\n  ");
+			String adate = String.parseString(in.readLine());
+			System.out.print("Patient's time_slot:\n  ");
+			String time_slot = String.parseString(in.readLine());
+			System.out.print("Patient's status:\n  ");
+			String status = String.parseString(in.readLine());
+        		String query = "INSERT INTO Patient "+
+           				"VALUES ("+appnt_ID+", "+adate+", "+time_slot+", "+status+")";
+
+           		int rowCount = esql.executeQuery(query);
+           		System.out.println ("total row(s): " + rowCount);
+      		}catch(Exception e){
+         		System.err.println (e.getMessage());
+      		}		
 	}
 
 
