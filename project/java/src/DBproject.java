@@ -308,9 +308,10 @@ public class DBproject{
 			System.out.print("Doctor's Department:\n  ");
 			String did = in.readLine();
         		String query = "INSERT INTO Doctor "+
-           				"VALUES ("+ID+", "+Name+", "+Specialty+", "+did+")";
+           				"VALUES ("+ID+", '"+Name+"', '"+Specialty+"', "+did+")";
 
-           		int rowCount = esql.executeQuery(query);
+           		System.out.println(query);
+			int rowCount = esql.executeQuery(query);
            		System.out.println ("total row(s): " + rowCount);
       		}catch(Exception e){
          		System.err.println (e.getMessage());
