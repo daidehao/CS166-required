@@ -333,9 +333,10 @@ public class DBproject{
 			System.out.print("Patient's number_of_appts:\n  ");
 			String number_of_appts = in.readLine();
         		String query = "INSERT INTO Patient "+
-           				"VALUES ("+patient_ID+", "+Name+", "+gtype+", "+age+", "+Address+", "+number_of_appts+")";
+           				"VALUES ("+patient_ID+", '"+Name+"', '"+gtype+"', "+age+", '"+Address+"', "+number_of_appts+")";
 
-           		int rowCount = esql.executeQuery(query);
+           		System.out.println(query);
+			int rowCount = esql.executeQuery(query);
            		System.out.println ("total row(s): " + rowCount);
       		}catch(Exception e){
          		System.err.println (e.getMessage());
@@ -352,9 +353,10 @@ public class DBproject{
 			String time_slot = in.readLine();
 			System.out.print("Patient's status:\n  ");
 			String status = in.readLine();
-        		String query = "INSERT INTO Patient "+
-           				"VALUES ("+appnt_ID+", "+adate+", "+time_slot+", "+status+")";
+        		String query = "INSERT INTO Appointment "+
+           				"VALUES ("+appnt_ID+", '"+adate+"', '"+time_slot+"', '"+status+"')";
 
+			System.out.println(query);
            		int rowCount = esql.executeQuery(query);
            		System.out.println ("total row(s): " + rowCount);
       		}catch(Exception e){
