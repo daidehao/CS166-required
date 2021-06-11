@@ -367,6 +367,55 @@ public class DBproject{
 
 	public static void MakeAppointment(DBproject esql) {//4
 		// Given a patient, a doctor and an appointment of the doctor that s/he wants to take, add an appointment to the DB
+		try{
+			System.out.print("Docter's ID:\n  ");
+			String DID = in.readLine();
+			System.out.print("Patient ID:\n  ");
+			String PID = in.readLine();
+			System.out.print("Appointment's Date:\n  ");
+			String date = in.readLine();
+			System.out.print("Appointment's time_slot:\n  ");
+			String time_slot = in.readLine();
+        		String query = "SELECT Appointment._STATUS "+
+           				"FROM Appointment "+
+					"WHERE Appointment.time_slot='"+time_slot+"' AND Appointment.adate='"+date+"'";
+					//"AND has_appointment.appt_id=Appointment.appnt_ID AND has_appointment.doctor_ID="+DID;
+
+			System.out.println(query+"\n");
+           		String status = esql.executeQueryAndReturnResult(query);
+			String query2 ="";
+           		switch (status){
+				case "AV":
+				case "av":
+					query2 = "UPDATE Appointment SET Appointment.status='AC' WHERE Appointment.time_slot='"+time_slot+"' AND Appointment.adate='"+date+"'";
+					esql.executeQueryAndPrintResult(query2);
+					break;
+				case "AC":
+				case "ac":
+					query2 = "UPDATE Appointment SET Appointment.status='WL' WHERE Appointment.time_slot='"+time_slot+"' AND Appointment.adate='"+date+"'";
+					esql.executeQueryAndPrintResult(query2);
+					break;
+				case NULL:
+					query2 = "SELECT Appointment.appnt_ID FROM Appointment order by Appointment.appnt_ID desc limit 1;";
+					String Aid = esql.executeQueryAndReturnResult(query2);
+					query2 = "INSERT INTO Appointment VALUES ("+(Integer.parseInt(Aid)+1)+", '"+date+"', '"+time_slot+"', 'AC')";
+					esql.executeQueryAndPrintResult(query2);
+					break;
+				case "WL":
+				case "wl":
+					query2 = "SELECT Appointment.appnt_ID FROM Appointment order by Appointment.appnt_ID desc limit 1;";
+					String Aid = esql.executeQueryAndReturnResult(query2);
+					query2 = "INSERT INTO Appointment VALUES ("+(Integer.parseInt(Aid)+1)+", '"+date+"', '"+time_slot+"', 'WL')";
+					esql.executeQueryAndPrintResult(query2);
+					query2 = "INSERT has_appointment VALUES ("+Aid+", "+DID+")";
+					esql.executeQueryAndPrintResult(query2);
+					break;
+				dafult:
+					break;
+			}
+      		}catch(Exception e){
+         		System.err.println (e.getMessage());
+      		}
 	}
 
 	public static void ListAppointmentsOfDoctor(DBproject esql) {//5
@@ -427,7 +476,7 @@ public class DBproject{
                                         "ORDER BY NUMBER Desc";
 
                         System.out.println(query+"\n");
-                        int rowCount = esql.executeQueryAndPrintResult(query);
+                        String rowCount = esql.executeQueryAndPrintResult(query);
                         System.out.println ("total row(s): " + rowCount);
                 }catch(Exception e){
                         System.err.println (e.getMessage());
