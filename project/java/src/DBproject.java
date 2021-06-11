@@ -418,6 +418,20 @@ public class DBproject{
 
 	public static void ListStatusNumberOfAppointmentsPerDoctor(DBproject esql) {//7
 		// Count number of different types of appointments per doctors and list them in descending order
+		try{
+                        String query =  "SELECT Doctor.name, Appointment.status , COUNT(*) AS NUMBER "+
+                                        "FROM Appointment, has_appointment, Doctor "+
+                                        "WHERE has_appointment.doctor_id = Doctor.doctor_id AND "+
+                                        "has_appointment.appt_id = Appointment.appnt_ID "+
+                                        "GROUP BY Doctor.name, Appointment.status "+
+                                        "ORDER BY NUMBER Desc";
+
+                        System.out.println(query+"\n");
+                        int rowCount = esql.executeQueryAndPrintResult(query);
+                        System.out.println ("total row(s): " + rowCount);
+                }catch(Exception e){
+                        System.err.println (e.getMessage());
+                }
 	}
 
 	
