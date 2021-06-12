@@ -352,7 +352,7 @@ public class DBproject{
 			System.out.print("Appointment's status:\n  ");
 			String status = in.readLine();
 			String query2 = "SELECT Appointment.appnt_ID FROM Appointment order by Appointment.appnt_ID desc limit 1;";
-			String New_Aid = ((esql.executeQueryAndReturnResult(query2)).get(0)).get(0);
+			String New_Aid = ((esql.executeQueryAndReturnResult(query2)).get(0)).get(0)+1;
         		String query = "INSERT INTO Appointment "+
            				"VALUES ("+New_Aid+", '"+adate+"', '"+time_slot+"', '"+status+"')";
 
@@ -387,13 +387,14 @@ public class DBproject{
 			//System.out.println(status);
 			//String query2 = "SELECT Appointment.appnt_ID FROM Appointment order by Appointment.appnt_ID desc limit 1;";
 			//String New_Aid = ((esql.executeQueryAndReturnResult(query2)).get(0)).get(0);
+			String query2 = "";
            		switch (status){
 				case "AV":
 				case "av":
 					query2 = "UPDATE Appointment SET Appointment.status='AC' WHERE Appointment.time_slot='"+time_slot+"' AND Appointment.adate='"+date+"'";
 					System.out.print(query2+"\n  ");
 					esql.executeQueryAndPrintResult(query2);
-					query2 = "INSERT has_appointment VALUES ("+Aid+", "+DID+")";
+					query2 = "INSERT has_appointment VALUES ("+AID+", "+DID+")";
 					System.out.print(query2+"\n  ");
 					esql.executeQueryAndPrintResult(query2);
 					query2 = "UPDATE Patient SET Patient.number_of_appts=Patient.number_of_appts+1 WHERE Patient.patient_ID="+PID;
@@ -405,7 +406,7 @@ public class DBproject{
 					query2 = "UPDATE Appointment SET Appointment.status='WL' WHERE Appointment.time_slot='"+time_slot+"' AND Appointment.adate='"+date+"'";
 					System.out.print(query2+"\n  ");
 					esql.executeQueryAndPrintResult(query2);
-					query2 = "INSERT has_appointment VALUES ("+Aid+", "+DID+")";
+					query2 = "INSERT has_appointment VALUES ("+AID+", "+DID+")";
 					System.out.print(query2+"\n  ");
 					esql.executeQueryAndPrintResult(query2);
 					query2 = "UPDATE Patient SET Patient.number_of_appts=Patient.number_of_appts+1 WHERE Patient.patient_ID="+PID;
@@ -417,7 +418,7 @@ public class DBproject{
 					System.out.println("There already exist one/more waitlist for this appointment, do you still want to add a waitlist in this appointment? (Y/N)");
 					String Type_In = in.readLine();
 					if (Type_In=="Y") {
-						query2 = "INSERT has_appointment VALUES ("+Aid+", "+DID+")";
+						query2 = "INSERT has_appointment VALUES ("+AID+", "+DID+")";
 						System.out.print(query2+"\n  ");
 						esql.executeQueryAndPrintResult(query2);
 						query2 = "UPDATE Patient SET Patient.number_of_appts=Patient.number_of_appts+1 WHERE Patient.patient_ID="+PID;
@@ -430,10 +431,6 @@ public class DBproject{
 							System.out.println("Error type, Return to menu");
 						}
 					}
-					query2 = "INSERT has_appointment VALUES ("+Aid+", "+DID+")";
-					esql.executeQueryAndPrintResult(query2);
-					break;
-				dafult:
 					break;
 			}
       		}catch(Exception e){
