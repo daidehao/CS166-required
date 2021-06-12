@@ -391,7 +391,7 @@ public class DBproject{
            		switch (status){
 				case "AV":
 				case "av":
-					query2 = "UPDATE Appointment SET Appointment.status='AC' WHERE Appointment.appnt_ID="+AID+";";
+					query2 = "UPDATE Appointment SET status='AC' WHERE appnt_ID="+AID+";";
 					System.out.print(query2+"\n  ");
 					esql.executeQueryAndPrintResult(query2);
 					query2 = "INSERT has_appointment VALUES ("+AID+", "+DID+")";
@@ -403,7 +403,7 @@ public class DBproject{
 					break;
 				case "AC":
 				case "ac":
-					query2 = "UPDATE Appointment SET Appointment.status='WL' WHERE Appointment.appnt_ID="+AID+";";
+					query2 = "UPDATE Appointment SET status='WL' WHERE appnt_ID="+AID+";";
 					System.out.print(query2+"\n  ");
 					esql.executeQueryAndPrintResult(query2);
 					query2 = "INSERT has_appointment VALUES ("+AID+", "+DID+")";
