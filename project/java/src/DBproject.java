@@ -425,7 +425,7 @@ public class DBproject{
 						System.out.print(query2+"\n  ");
 						esql.executeQueryAndPrintResult(query2);
 					} else {
-						if (Type_In=='N') {
+						if (Type_In=="N") {
 							System.out.println("---Return to menu---");
 						} else {
 							System.out.println("Error type, Return to menu");
