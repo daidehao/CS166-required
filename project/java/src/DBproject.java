@@ -381,8 +381,8 @@ public class DBproject{
 
 			System.out.print(query+"\n  ");
 			System.out.println(esql.executeQueryAndReturnResult(query));
-			String date = ((esql.executeQueryAndReturnResult(query)).get(0)).get(1);
-			String time_slot = ((esql.executeQueryAndReturnResult(query)).get(0)).get(2);
+			//String date = ((esql.executeQueryAndReturnResult(query)).get(0)).get(1);
+			//String time_slot = ((esql.executeQueryAndReturnResult(query)).get(0)).get(2);
            		String status = ((esql.executeQueryAndReturnResult(query)).get(0)).get(3);
 			//System.out.println(status);
 			//String query2 = "SELECT Appointment.appnt_ID FROM Appointment order by Appointment.appnt_ID desc limit 1;";
@@ -391,7 +391,7 @@ public class DBproject{
            		switch (status){
 				case "AV":
 				case "av":
-					query2 = "UPDATE Appointment SET Appointment.status='AC' WHERE Appointment.time_slot='"+time_slot+"' AND Appointment.adate='"+date+"'";
+					query2 = "UPDATE Appointment SET Appointment.status='AC' WHERE Appointment.appnt_ID="+AID+";";
 					System.out.print(query2+"\n  ");
 					esql.executeQueryAndPrintResult(query2);
 					query2 = "INSERT has_appointment VALUES ("+AID+", "+DID+")";
@@ -403,7 +403,7 @@ public class DBproject{
 					break;
 				case "AC":
 				case "ac":
-					query2 = "UPDATE Appointment SET Appointment.status='WL' WHERE Appointment.time_slot='"+time_slot+"' AND Appointment.adate='"+date+"'";
+					query2 = "UPDATE Appointment SET Appointment.status='WL' WHERE Appointment.appnt_ID="+AID+";";
 					System.out.print(query2+"\n  ");
 					esql.executeQueryAndPrintResult(query2);
 					query2 = "INSERT has_appointment VALUES ("+AID+", "+DID+")";
