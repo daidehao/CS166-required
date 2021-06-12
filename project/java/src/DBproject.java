@@ -381,13 +381,14 @@ public class DBproject{
 
 			System.out.print(query+"\n  ");
 			//System.out.println(esql.executeQueryAndReturnResult(query));
-           		String status = ((esql.executeQueryAndReturnResult(query)).get(0)).get(0);
+           		/*String status = ((esql.executeQueryAndReturnResult(query)).get(0)).get(0);
 			System.out.println(status);
 			String query2 ="";
            		switch (status){
 				case "AV":
 				case "av":
-					query2 = "UPDATE Appointment SET Appointment.status='AC' WHERE Appointment.time_slot='"+time_slot+"' AND Appointment.adate='"+date+"'";
+					query2 = "INSERT INTO Appointment VALUES ("+(Integer.parseInt(Aid)+1)+", '"+date+"', '"+time_slot+"', 'WL')";
+					//query2 = "SELECT Appointment.appnt_ID FROM Appointment order by Appointment.appnt_ID desc limit 1;";
 					esql.executeQueryAndPrintResult(query2);
 					break;
 				case "AC":
@@ -412,7 +413,7 @@ public class DBproject{
 					break;
 				dafult:
 					break;
-			}
+			}*/
       		}catch(Exception e){
          		System.err.println (e.getMessage());
       		}
