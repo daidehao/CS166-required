@@ -432,6 +432,10 @@ public class DBproject{
 						}
 					}
 					break;
+				case "PA":
+				case "pa":
+					System.out.println("ERROR: This is a past appointment");
+					break;
 			}
       		}catch(Exception e){
          		System.err.println (e.getMessage());
