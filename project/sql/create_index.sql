@@ -1,3 +1,9 @@
+DROP INDEX Patient_index;
+DROP INDEX Hospital_index;
+DROP INDEX Department_index;
+DROP INDEX Staff_index;
+DROP INDEX Doctor_index;
+DROP INDEX Appointment_index;
 CREATE INDEX Patient_index on Patient USING BTREE(patient_ID);
 CREATE INDEX Hospital_index on Hospital USING BTREE(hospital_ID);
 CREATE INDEX Department_index on Department USING BTREE(dept_ID);
