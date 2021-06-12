@@ -9,5 +9,5 @@ cp ../data/*.csv /tmp/$USER/myDB/data/.
 
 echo "Initializing tables .. "
 sleep 1
-sql -h localhost -p $PGPORT $USER"_DB" < ../sql/create.sql
-sql -h localhost -p $PGPORT $USER"_DB" < ../sql/create_index.sql
+psql -h localhost -p $PGPORT $USER"_DB" < ../sql/create.sql
+psql -h localhost -p $PGPORT $USER"_DB" < ../sql/create_index.sql
