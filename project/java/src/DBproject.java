@@ -374,16 +374,16 @@ public class DBproject{
 			String PID = in.readLine();
 			System.out.print("Appointment's id:\n  ");
 			String AID = in.readLine();
-        		String query = "SELECT Appointment.status "+
+        		String query = "SELECT * "+
            				"FROM Appointment "+
 					"WHERE Appointment.appnt_ID="+AID+";";
 					//"AND has_appointment.appt_id=Appointment.appnt_ID AND has_appointment.doctor_ID="+DID;
 
 			System.out.print(query+"\n  ");
-			//System.out.println(esql.executeQueryAndReturnResult(query));
-           		/*String status = ((esql.executeQueryAndReturnResult(query)).get(0)).get(0);
+			System.out.println(esql.executeQueryAndReturnResult(query));
+           		String status = ((esql.executeQueryAndReturnResult(query)).get(0)).get(0);
 			System.out.println(status);
-			String query2 ="";
+			/*String query2 ="";
            		switch (status){
 				case "AV":
 				case "av":
