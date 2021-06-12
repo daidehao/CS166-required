@@ -382,7 +382,8 @@ public class DBproject{
 					//"AND has_appointment.appt_id=Appointment.appnt_ID AND has_appointment.doctor_ID="+DID;
 
 			System.out.println(query+"\n");
-           		String status = esql.executeQueryAndReturnResult(query);
+			System.out.println(esql.executeQueryAndReturnResult(query));
+           		/*String status = esql.executeQueryAndReturnResult(query);
 			String query2 ="";
            		switch (status){
 				case "AV":
@@ -412,7 +413,7 @@ public class DBproject{
 					break;
 				dafult:
 					break;
-			}
+			}*/
       		}catch(Exception e){
          		System.err.println (e.getMessage());
       		}
