@@ -372,18 +372,17 @@ public class DBproject{
 			String DID = in.readLine();
 			System.out.print("Patient ID:\n  ");
 			String PID = in.readLine();
-			System.out.print("Appointment's Date:\n  ");
-			String date = in.readLine();
-			System.out.print("Appointment's time_slot:\n  ");
-			String time_slot = in.readLine();
-        		String query = "SELECT Appointment._STATUS "+
+			System.out.print("Appointment's id:\n  ");
+			String AID = in.readLine();
+        		String query = "SELECT Appointment.status "+
            				"FROM Appointment "+
-					"WHERE Appointment.time_slot='"+time_slot+"' AND Appointment.adate='"+date+"'";
+					"WHERE Appointment.appnt_ID="+AID+";";
 					//"AND has_appointment.appt_id=Appointment.appnt_ID AND has_appointment.doctor_ID="+DID;
 
-			System.out.println(query+"\n");
-			System.out.println(esql.executeQueryAndReturnResult(query));
-           		/*String status = esql.executeQueryAndReturnResult(query);
+			System.out.print(query+"\n  ");
+			//System.out.println(esql.executeQueryAndReturnResult(query));
+           		String status = ((esql.executeQueryAndReturnResult(query)).get(0)).get(0);
+			System.out.println(status);
 			String query2 ="";
            		switch (status){
 				case "AV":
@@ -413,7 +412,7 @@ public class DBproject{
 					break;
 				dafult:
 					break;
-			}*/
+			}
       		}catch(Exception e){
          		System.err.println (e.getMessage());
       		}
@@ -477,7 +476,7 @@ public class DBproject{
                                         "ORDER BY NUMBER Desc";
 
                         System.out.println(query+"\n");
-                        String rowCount = esql.executeQueryAndPrintResult(query);
+                        int rowCount = esql.executeQueryAndPrintResult(query);
                         System.out.println ("total row(s): " + rowCount);
                 }catch(Exception e){
                         System.err.println (e.getMessage());
